@@ -1,5 +1,5 @@
-// golang memiliki harus memiliki function main sebagai entry point atau eksekusi program
 package main
+// golang memiliki harus memiliki function main sebagai entry point atau eksekusi program
 
 // golang memiliki case sensitive artinya huruf besar dan kecil dapat mempengaruhi program
 // package adalah keyword yang digunakan untuk deklarasi package yang digunakan dalam program
@@ -18,9 +18,8 @@ import "fmt"
 // ./belajar (untuk menjalankan program)
 
 
-// Menjalankan menggunakan interpreter
-// Menggunakan interpreter tidak perlu mengcompile program
-// go run belajar.go (untuk menjalankan program)
+// Di dalam go kita bisa mengcompile program dan langsung dijalankan menggunakan go run
+// Dalam go run tidak akan menghasilkan file binary yang executable
 
 
 // Dalam golang, tidak diperbolehkan membuat nama function main lebih dari satu meskipun berada di file yang berbeda
@@ -28,8 +27,6 @@ import "fmt"
 // Namun ketika menggunakan go run, maka tidak akan terjadi error dan mencetak yang ada di file yang di run
 
 // Untuk concat string dengan integer bisa menggunakan koma (,) atau menggunakan + dengan fmt.Sprint() yang mengembalikan string
-
-
 
 // function main akan dieksekusi saat program dijalankan
 func main() {
@@ -102,4 +99,31 @@ func main() {
 	jumlah = jumlah + 5
 
 	fmt.Println("Nilai setelah ditambah 5:", jumlah)
+
+
+	// Di golang kita bisa membuat alias atau nama lain dari tipe data
+	type NIM string
+
+	var nim NIM = "2131"
+
+	fmt.Println("NIM:", nim)
+
+	var temperature int = 210
+
+	fmt.Println("Temperature:", temperature)
+	
+	
+	// Mendefinisikan array
+	// di golang, array memiliki panjang yang tetap
+	// sintaksnya adalah variable := [jumlah]tipe_data{isi_array}
+	// atau bisa menggunakan ... untuk mengisi array tanpa menentukan jumlah array
+
+	var array = [3]int{1, 2, 3}
+	var array2 = [...]int{1, 2, 3, 4, 5}
+
+	fmt.Println(array)
+	fmt.Println(array2)
+
+
+
 }
