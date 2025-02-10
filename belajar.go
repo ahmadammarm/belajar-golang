@@ -6,8 +6,16 @@ package main
 
 // fmt adalah package yang berisi fungsi-fungsi untuk input dan output
 // fmt adalah singkatan dari format
-import "fmt"
+import (
+	"fmt"
+	// "belajar/hello"
+)
 
+// Ingin mengimport package lain, bisa menggunakan import "nama_package"
+// Jika ingin mengimport package yang ada di dalam folder, bisa menggunakan import "./nama_folder/nama_package"
+// Jika ingin mengimport package yang ada di luar folder, bisa menggunakan import "nama_folder/nama_package"
+
+// import "hello"
 
 
 // MENJALANKAN PROGRAM GOLANG DI TERMINAL
@@ -27,6 +35,22 @@ import "fmt"
 // Namun ketika menggunakan go run, maka tidak akan terjadi error dan mencetak yang ada di file yang di run
 
 // Untuk concat string dengan integer bisa menggunakan koma (,) atau menggunakan + dengan fmt.Sprint() yang mengembalikan string
+
+
+func isPrime(angka int) bool {
+	if angka < 2 {
+		return false
+	}
+
+	for i := 2; i < angka; i++ {
+		if angka % i == 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
 
 // function main akan dieksekusi saat program dijalankan
 func main() {
@@ -112,7 +136,7 @@ func main() {
 
 	fmt.Println("Temperature:", temperature)
 	
-	
+
 	// Mendefinisikan array
 	// di golang, array memiliki panjang yang tetap
 	// sintaksnya adalah variable := [jumlah]tipe_data{isi_array}
@@ -124,6 +148,6 @@ func main() {
 	fmt.Println(array)
 	fmt.Println(array2)
 
-
+	fmt.Println(isPrime(39))
 
 }
