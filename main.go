@@ -199,4 +199,29 @@ func main() {
 	// underflow adalah ketika nilai kurang dari kapasitas tipe data dan nilai akan kembali ke nilai terbesar
 	var sisi int = 33
 	fmt.Println(float32(sisi))
+
+	var nama_byte = "Ammar"
+	var byte = nama_byte[2]
+	var stringByte = string(byte)
+	fmt.Println(stringByte)
+
+	// Latihan soal 1
+	var namaAmmar string = "Ammar"
+	var umurAmmar int = 21
+	var beratBadan float64 = 70.5
+	var sudahMenikah string = "Belum menikah"
+
+	fmt.Println("Nama:", namaAmmar)
+	fmt.Println("Umur:", umurAmmar)
+	fmt.Println("Berat Badan:", beratBadan, "kg")
+	fmt.Println("Status:", sudahMenikah)
+
+
+	// Latihan soal 2
+	var mataKuliah string = "Pemrograman Go"
+	sks := 3
+
+	fmt.Println("Mata Kuliah:", mataKuliah)
+	fmt.Println("Jumlah SKS:", sks)
+
 }
