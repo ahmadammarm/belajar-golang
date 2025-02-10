@@ -9,6 +9,7 @@ package main
 // fmt adalah singkatan dari format
 import (
 	"fmt"
+	// "strconv"
 	// "belajar/hello"
 )
 
@@ -223,5 +224,21 @@ func main() {
 
 	fmt.Println("Mata Kuliah:", mataKuliah)
 	fmt.Println("Jumlah SKS:", sks)
+
+	// Latihan soal 3
+	var angkaSoal float64 = 42.75
+	fmt.Println("Nilai floatnya adalah", angkaSoal)
+	var angkaInt = int(angkaSoal)
+	fmt.Println("Angka integernya adalah", angkaInt)
+
+	// Latihan soal 4
+	// var angkaString string = "100"
+	// fmt.Println("String sebelum dikonversi adalah", angkaString)
+	// angkaInteger, err := strconv.Atoi(angkaString)
+	// if err != nil {
+	// 	fmt.Println("Error converting string to integer:", err)
+	// } else {
+	// 	fmt.Println("Sesudah dikonversi menjadi", angkaInteger)
+	// }
 
 }
