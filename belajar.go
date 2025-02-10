@@ -1,4 +1,5 @@
 package main
+
 // golang memiliki harus memiliki function main sebagai entry point atau eksekusi program
 
 // golang memiliki case sensitive artinya huruf besar dan kecil dapat mempengaruhi program
@@ -17,7 +18,6 @@ import (
 
 // import "hello"
 
-
 // MENJALANKAN PROGRAM GOLANG DI TERMINAL
 
 // Menjalankan menggunakan compiler
@@ -25,10 +25,8 @@ import (
 // Akan menghasilkan file binary belajar yang executable atau bisa dijalankan
 // ./belajar (untuk menjalankan program)
 
-
 // Di dalam go kita bisa mengcompile program dan langsung dijalankan menggunakan go run
 // Dalam go run tidak akan menghasilkan file binary yang executable
-
 
 // Dalam golang, tidak diperbolehkan membuat nama function main lebih dari satu meskipun berada di file yang berbeda
 // Jika ada lebih dari satu function main, maka akan terjadi error saat compile program atau build program
@@ -36,14 +34,13 @@ import (
 
 // Untuk concat string dengan integer bisa menggunakan koma (,) atau menggunakan + dengan fmt.Sprint() yang mengembalikan string
 
-
 func isPrime(angka int) bool {
 	if angka < 2 {
 		return false
 	}
 
 	for i := 2; i < angka; i++ {
-		if angka % i == 0 {
+		if angka%i == 0 {
 			return false
 		}
 	}
@@ -51,6 +48,11 @@ func isPrime(angka int) bool {
 	return true
 }
 
+func luasLingkaran(jariJari int) int {
+	var phi float64 = 3.14
+	var luas int = int(phi * float64(jariJari) * float64(jariJari))
+	return luas
+}
 
 // function main akan dieksekusi saat program dijalankan
 func main() {
@@ -75,10 +77,10 @@ func main() {
 	// fmt.Println("hasil dari penjumlahan angka", angka1, "dan", angka2, "adalah", hasil)
 
 	// var name string = "Ammar"
-	
+
 	// Mengambil index dalam string namun dalam bentuk byte, bukan tipe data string
 	// fmt.Println(name[2])
-	
+
 	// Variable var bisa diubah nilainya (seperti var dalam js)
 	// var nim string = "2131"
 	// nim = "313123"
@@ -124,7 +126,6 @@ func main() {
 
 	fmt.Println("Nilai setelah ditambah 5:", jumlah)
 
-
 	// Di golang kita bisa membuat alias atau nama lain dari tipe data
 	type NIM string
 
@@ -135,19 +136,67 @@ func main() {
 	var temperature int = 210
 
 	fmt.Println("Temperature:", temperature)
-	
 
 	// Mendefinisikan array
 	// di golang, array memiliki panjang yang tetap
 	// sintaksnya adalah variable := [jumlah]tipe_data{isi_array}
 	// atau bisa menggunakan ... untuk mengisi array tanpa menentukan jumlah array
-
 	var array = [3]int{1, 2, 3}
 	var array2 = [...]int{1, 2, 3, 4, 5}
 
 	fmt.Println(array)
 	fmt.Println(array2)
 
+	// Memanggil function dari package lain
 	fmt.Println(isPrime(39))
 
+	// Menggunakan pointer di golang dengan tanda &
+	var nama_mahasiswa string = "Ahmad Ammar Musyaffa"
+	var nama_kampus string = "Universitas Negeri Malang"
+
+	fmt.Println("Nama saya adalah", nama_mahasiswa, "dan saya kuliah di", nama_kampus)
+
+	fmt.Println(&nama_mahasiswa)
+	fmt.Println(&nama_kampus)
+	fmt.Println(&nama)	
+	// pointer hanya bisa digunakan di tipe data tertentu seperti int, string, bool, dll
+	// pointer tidak bisa digunakan di array, slice, map, dll
+	// pointer hanya bisa digunakan di tipe data yang memiliki alamat memori
+	// pointer hanya bisa diakses di function yang sama
+	// pointer hanya bisa diakses oleh variable, bukan value
+	fmt.Println(&nim)
+	fmt.Println(luasLingkaran(10))
+
+	// constant boleh tidak digunakan, tidak seperti var
+	// constant nilainya tidak bisa diubah
+	const ammar = "Ammar"
+	const (
+		adil = "Adil"
+		sholum = "Sholum"
+	)
+
+	fmt.Println(ammar, adil, sholum)
+
+	// Konversi tipe data
+	// Contoh tipe data di golang
+	// int8, int16, int32, int64
+	// nilai dari int8 adalah -128 sampai 127
+	// nilai dari int16 adalah -32768 sampai 32767
+	// nilai dari int32 adalah -2147483648 sampai 2147483647
+	// nilai dari int64 adalah -9223372036854775808 sampai 9223372036854775807
+	// uint8, uint16, uint32, uint64
+	// nilai dari uint8 adalah 0 sampai 255
+	// nilai dari uint16 adalah 0 sampai 65535
+	// nilai dari uint32 adalah 0 sampai 4294967295
+	// nilai dari uint64 adalah 0 sampai 18446744073709551615
+	// float32, float64
+	// nilai dari float32 adalah 1.18e-38 sampai 3.4e38
+	// nilai dari float64 adalah 2.23e-308 sampai 1.8e308
+	// string
+	// bool
+	// jika nilainya melebihi kapasitas tipe data maka akan terjadi overflow atau underflow
+	// overflow adalah ketika nilai melebihi kapasitas tipe data dan nilai akan kembali ke nilai terkecil
+	// underflow adalah ketika nilai kurang dari kapasitas tipe data dan nilai akan kembali ke nilai terbesar
+	var sisi int = 33
+	fmt.Println(float32(sisi))
 }
