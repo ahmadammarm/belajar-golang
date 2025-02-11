@@ -35,19 +35,23 @@ import (
 
 // Untuk concat string dengan integer bisa menggunakan koma (,) atau menggunakan + dengan fmt.Sprint() yang mengembalikan string
 
+
+// Penulisan function, jika return value, maka harus dideklarasikan tipe data return valuenya
+// Jika tidak ada return value, maka tidak perlu dideklarasikan tipe data return valuenya seperti langsung fmt.Println()
 func isPrime(angka int) bool {
 	if angka < 2 {
 		return false
 	}
 
 	for i := 2; i < angka; i++ {
-		if angka%i == 0 {
+		if angka % i ==0 {
 			return false
 		}
 	}
 
 	return true
 }
+
 
 func luasLingkaran(jariJari int) int {
 	var phi float64 = 3.14
@@ -149,7 +153,7 @@ func main() {
 	fmt.Println(array2)
 
 	// Memanggil function dari package lain
-	fmt.Println(isPrime(39))
+	// fmt.Println(isPrime(39))
 
 	// Menggunakan pointer di golang dengan tanda &
 	var nama_mahasiswa string = "Ahmad Ammar Musyaffa"
@@ -165,6 +169,10 @@ func main() {
 	// pointer hanya bisa digunakan di tipe data yang memiliki alamat memori
 	// pointer hanya bisa diakses di function yang sama
 	// pointer hanya bisa diakses oleh variable, bukan value
+
+	// jika mengunakan * maka akan mengambil value dari pointer
+	// jika menggunakan & maka akan mengambil alamat memori dari variable
+	// jika menggunakan * dan & maka akan mengambil value dari alamat memori
 	fmt.Println(&nim)
 	fmt.Println(luasLingkaran(10))
 
@@ -240,5 +248,27 @@ func main() {
 	// } else {
 	// 	fmt.Println("Sesudah dikonversi menjadi", angkaInteger)
 	// }
+
+	fmt.Println(isPrime(21))
+
+	var x int = 10
+	var y int
+
+	// tanda * di bawah ini digunakan untuk mengambil value dari pointer
+	var ip *int
+	
+	ip = &x
+	y = *ip
+	fmt.Println(y, ip)
+
+	var a int = 100
+	var b int = 200
+
+	fmt.Println(&a, *&b)
+
+	// method new digunakan untuk membuat pointer meskipun tidak ada value dalam variable
+	angkas := new(int)
+	// *angkas = 10
+	fmt.Println(angkas)
 
 }
