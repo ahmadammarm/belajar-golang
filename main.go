@@ -18,6 +18,7 @@ import (
 
 	// Mengimport package lain dari folder yang berbeda menggunakan nama module/package
 	"belajar/hello"
+	"belajar/aritmatika"
 )
 
 // Ingin mengimport package lain, bisa menggunakan import "nama_package"
@@ -84,33 +85,19 @@ func luasLingkaran(jariJari int) int {
 	return luas
 }
 
-func fizzBuzz (angka int) {
+func fizzBuzz(angka int) {
 	for i := 1; i <= angka; i++ {
-		if i % 3 == 0 && i % 5 == 0 {
+		if i%3 == 0 && i%5 == 0 {
 			fmt.Println("FizzBuzz")
-		} else if i % 3 == 0 {
+		} else if i%3 == 0 {
 			fmt.Println("Fizz")
-		} else if i % 5 == 0 {
+		} else if i%5 == 0 {
 			fmt.Println("Buzz")
 		} else {
 			fmt.Println(i)
 		}
 	}
 }
-
-// func fizzBuzz(angka int) {
-// 	for i := 1; i < angka; i++ {
-// 		if i%3 == 0 && i%5 == 0 {
-// 			fmt.Println("FizzBuzz")
-// 		} else if i%3 == 0 {
-// 			fmt.Println("Fizz")
-// 		} else if i%5 == 0 {
-// 			fmt.Println("Buzz")
-// 		} else {
-// 			fmt.Println(i)
-// 		}
-// 	}
-// }
 
 func helloWorld() string {
 	var hello string = "Hello World"
@@ -430,4 +417,61 @@ func main() {
 	fmt.Println(formattedTime)
 	// fmt.Println(time)
 	fizzBuzz(20)
+
+	// Untuk operasi aritmatika harus memiliki tipe data yang sama
+	// Misal disini ingin menambahkan kedua bilangan float dan integer
+	// Jika ingin hasilnya adalah bilangan float maka harus mengonversi ke float terlebih dahulu
+	// Begitu juga jika ingin hasilnya integer, harus dikonversi ke integer terlebih dahulu untuk angka floatnya
+	var angkaFloat float64 = 3.14
+	var angkaInteger int16 = 100
+
+	var result = angkaFloat + float64(angkaInteger)
+	fmt.Println(result)
+
+	var namaString string = "Ammar"
+	var namaByte = namaString[3]
+	fmt.Println(namaByte)
+	var balikString string = string(namaByte)
+	fmt.Println(balikString)
+
+	type ammarstring string
+	var namaku ammarstring = "Ammar"
+	fmt.Println(namaku)
+
+	fmt.Println(aritmatika.Aritmatika(1, 2))
+	
+	var angkaBaru int8 = 30
+	angkaBaru++
+	fmt.Println(angkaBaru)
+
+	var angkaBaru2 int8 = 34
+	fmt.Println(angkaBaru != angkaBaru2)
+
+
+	// Latian soal
+
+	// Ada sebuah taman yang memiliki sebuah kolam berbentuk lingkaran
+	// Kolam tersebut memiliki jari-jari sekitar 10m
+	// Luas dari taman tersebut adalah 20hektar
+	// Berapakah luas dari bagian taman selain kolam
+
+	// Ukuran luas taman berdasarkan satuan m^2
+	var luas_taman int16 = 2000
+
+	// jari jari kolam dalam satuan meter
+	var jari_jari_kolam int16= 10
+	var pi float64= 3.14
+
+
+	var float_luas_taman = float64(luas_taman)
+	var float_jari_jari = float64(jari_jari_kolam)
+
+	luas_kolam := pi * float_jari_jari * float_jari_jari
+
+	fmt.Println("Luas kolam adalah", luas_kolam)
+
+	bagian_taman := float_luas_taman - luas_kolam
+
+	fmt.Println("Jadi luas dari bagian taman tanpa kolam tersebut adalah", bagian_taman)
+
 }
