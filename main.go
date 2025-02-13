@@ -9,9 +9,12 @@ package main
 // fmt adalah singkatan dari format
 import (
 	"fmt"
+	"time"
+	// "go/types"
 	// "strconv"
-	"strings"
 	"math/rand"
+	"reflect"
+	"strings"
 
 	// Mengimport package lain dari folder yang berbeda menggunakan nama module/package
 	"belajar/hello"
@@ -39,16 +42,26 @@ import (
 
 // Untuk concat string dengan integer bisa menggunakan koma (,) atau menggunakan + dengan fmt.Sprint() yang mengembalikan string
 
-
 // Penulisan function, jika return value, maka harus dideklarasikan tipe data return valuenya
 // Jika tidak ada return value, maka tidak perlu dideklarasikan tipe data return valuenya seperti langsung fmt.Println()
+
+// jika ingin memanggil function lain ke dalam function main, maka function lain tersebut harus me return sesuatu
+
+func duastring(a, b string) (string, string) {
+	return a, b
+}
+
+func penjumlahan(x int, y int) int {
+	return x + y
+}
+
 func isPrime(angka int) bool {
 	if angka < 2 {
 		return false
 	}
 
 	for i := 2; i < angka; i++ {
-		if angka % i ==0 {
+		if angka%i == 0 {
 			return false
 		}
 	}
@@ -57,6 +70,7 @@ func isPrime(angka int) bool {
 }
 
 func findian(ian string) string {
+
 	if strings.HasPrefix(ian, "i") && strings.Contains(ian, "a") && strings.HasSuffix(ian, "n") {
 		return "Found!"
 	}
@@ -64,12 +78,39 @@ func findian(ian string) string {
 	return "Not Found!"
 }
 
-
 func luasLingkaran(jariJari int) int {
 	var phi float64 = 3.14
 	var luas int = int(phi * float64(jariJari) * float64(jariJari))
 	return luas
 }
+
+func fizzBuzz (angka int) {
+	for i := 1; i <= angka; i++ {
+		if i % 3 == 0 && i % 5 == 0 {
+			fmt.Println("FizzBuzz")
+		} else if i % 3 == 0 {
+			fmt.Println("Fizz")
+		} else if i % 5 == 0 {
+			fmt.Println("Buzz")
+		} else {
+			fmt.Println(i)
+		}
+	}
+}
+
+// func fizzBuzz(angka int) {
+// 	for i := 1; i < angka; i++ {
+// 		if i%3 == 0 && i%5 == 0 {
+// 			fmt.Println("FizzBuzz")
+// 		} else if i%3 == 0 {
+// 			fmt.Println("Fizz")
+// 		} else if i%5 == 0 {
+// 			fmt.Println("Buzz")
+// 		} else {
+// 			fmt.Println(i)
+// 		}
+// 	}
+// }
 
 func helloWorld() string {
 	var hello string = "Hello World"
@@ -180,7 +221,7 @@ func main() {
 
 	fmt.Println(&nama_mahasiswa)
 	fmt.Println(&nama_kampus)
-	fmt.Println(&nama)	
+	fmt.Println(&nama)
 	// pointer hanya bisa digunakan di tipe data tertentu seperti int, string, bool, dll
 	// pointer tidak bisa digunakan di array, slice, map, dll
 	// pointer hanya bisa digunakan di tipe data yang memiliki alamat memori
@@ -197,7 +238,7 @@ func main() {
 	// constant nilainya tidak bisa diubah
 	const ammar = "Ammar"
 	const (
-		adil = "Adil"
+		adil   = "Adil"
 		sholum = "Sholum"
 	)
 
@@ -242,7 +283,6 @@ func main() {
 	fmt.Println("Berat Badan:", beratBadan, "kg")
 	fmt.Println("Status:", sudahMenikah)
 
-
 	// Latihan soal 2
 	var mataKuliah string = "Pemrograman Go"
 	sks := 3
@@ -273,7 +313,7 @@ func main() {
 
 	// tanda * di bawah ini digunakan untuk mengambil value dari pointer
 	var ip *int
-	
+
 	ip = &x
 	y = *ip
 	fmt.Println(y, ip)
@@ -313,7 +353,6 @@ func main() {
 	pointerAngka = &nilaiSebelumBerubah
 	// nilaiSetelahBerubah = *pointerAngka
 
-
 	fmt.Println(nilaiSebelumBerubah)
 	fmt.Println(nilaiSetelahBerubah)
 	fmt.Println(pointerAngka)
@@ -352,9 +391,43 @@ func main() {
 	// 	fmt.Println()
 	// }
 
-	fmt.Println("Angka favorit saya adalah", rand.Intn(10) - 8)
+	fmt.Println("Angka favorit saya adalah", rand.Intn(10)-8)
 
 	hasil := hello.Hello()
 	fmt.Println(hasil)
 
+	// Mendeklarasikan tipe data menggunakan package dari reflect dan menggunakan method TypeOf
+	nomor := 123
+	fmt.Println(reflect.TypeOf(nomor))
+
+	fmt.Println(penjumlahan(12, 21))
+
+	var int int = 12
+	var konversi float64 = float64(int)
+
+	fmt.Println(konversi)
+
+	var1, var2, var3 := 1, 2, 3
+	var int1, int2, int3 = 1, 2, 3
+	fmt.Println(int1, int2, int3, int1+int2+int3)
+	fmt.Println(var1, var2, var3, var1+var2+var3)
+
+	w, e := duastring("hello", "world")
+	fmt.Println(w, e)
+
+	ab := 5
+
+	switch {
+	case ab > 3:
+		fmt.Println("World")
+	case ab > 4:
+		fmt.Println("Hello")
+	}
+
+	// Memanggil package time dan salah satu methodnya
+	times := time.Now()
+	formattedTime := times.Format("Monday, 02 January 2006")
+	fmt.Println(formattedTime)
+	// fmt.Println(time)
+	fizzBuzz(20)
 }
