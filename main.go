@@ -1,6 +1,6 @@
 package main
 
-// golang memiliki harus memiliki function main sebagai entry point atau eksekusi program
+// golang memiliki harus memiliki package dan function main sebagai entry point atau eksekusi program
 
 // golang memiliki case sensitive artinya huruf besar dan kecil dapat mempengaruhi program
 // package adalah keyword yang digunakan untuk deklarasi package yang digunakan dalam program
@@ -10,7 +10,11 @@ package main
 import (
 	"fmt"
 	// "strconv"
-	// "belajar/hello"
+	"strings"
+	"math/rand"
+
+	// Mengimport package lain dari folder yang berbeda menggunakan nama module/package
+	"belajar/hello"
 )
 
 // Ingin mengimport package lain, bisa menggunakan import "nama_package"
@@ -52,11 +56,24 @@ func isPrime(angka int) bool {
 	return true
 }
 
+func findian(ian string) string {
+	if strings.HasPrefix(ian, "i") && strings.Contains(ian, "a") && strings.HasSuffix(ian, "n") {
+		return "Found!"
+	}
+
+	return "Not Found!"
+}
+
 
 func luasLingkaran(jariJari int) int {
 	var phi float64 = 3.14
 	var luas int = int(phi * float64(jariJari) * float64(jariJari))
 	return luas
+}
+
+func helloWorld() string {
+	var hello string = "Hello World"
+	return hello
 }
 
 // function main akan dieksekusi saat program dijalankan
@@ -270,5 +287,74 @@ func main() {
 	angkas := new(int)
 	// *angkas = 10
 	fmt.Println(angkas)
+
+	type wsas int
+	var ws wsas = 10
+	fmt.Println(ws)
+
+	// variable scope
+	// variable yang dideklarasikan di dalam function hanya bisa diakses di dalam function tersebut
+	// variable yang dideklarasikan di luar function bisa diakses di dalam function tersebut
+	// variable yang dideklarasikan di luar function bisa diakses di dalam function lain
+	// variable yang dideklarasikan di dalam function tidak bisa diakses di dalam function lain
+
+	fmt.Println(helloWorld())
+
+	var angkaSoalPointer int = 10
+	var ptr = *&angkaSoalPointer
+
+	fmt.Println("Alamat dari variable tersebut adalah", &angkaSoalPointer)
+	fmt.Println("Nilai dari pointer ptr adalah", ptr)
+
+	var nilaiSebelumBerubah int = 50
+	var nilaiSetelahBerubah int
+
+	var pointerAngka *int
+	pointerAngka = &nilaiSebelumBerubah
+	// nilaiSetelahBerubah = *pointerAngka
+
+
+	fmt.Println(nilaiSebelumBerubah)
+	fmt.Println(nilaiSetelahBerubah)
+	fmt.Println(pointerAngka)
+
+	// Stack dan Heap memory
+	// Stack memory akan menampung variable yang berada di dalam function
+	// Sedangkan heap memoery akan menampung variable yang berada di luar function
+	// Stack memory akan dihapus ketika function selesai dijalankan
+
+	// cara dialokasi heap memory di golang adalah dengan menggunakan keyword new
+	// new akan mengembalikan alamat memori dari variable tersebut
+	// new hanya bisa digunakan di tipe data tertentu seperti int, string, bool, dll
+	// new tidak bisa digunakan di array, slice, map, dll
+	// new hanya bisa digunakan di tipe data yang memiliki alamat memori
+
+	var x1 string = "X"
+	xx := "Y"
+
+	fmt.Println(x1, xx)
+
+	// strings method mengimport package strings
+	fmt.Println(strings.ToLower("Saya sedang belajar golang"))
+	fmt.Println(strings.Count("Aku sedang belajar golang", "a"))
+
+	// Tipe floating
+	var trunc float32 = 3.14
+	fmt.Println(int(trunc))
+	fmt.Println(findian("ian"))
+
+	// x := 7
+
+	// switch {
+	// case x > 3:
+	// 	fmt.Println("1")
+	// case x > 5:
+	// 	fmt.Println()
+	// }
+
+	fmt.Println("Angka favorit saya adalah", rand.Intn(10) - 8)
+
+	hasil := hello.Hello()
+	fmt.Println(hasil)
 
 }
