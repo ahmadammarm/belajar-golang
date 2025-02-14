@@ -20,7 +20,6 @@ import (
 	// Mengimport package lain dari folder yang berbeda menggunakan nama module/package
 	"belajar/aritmatika"
 	"belajar/hello"
-
 )
 
 // Ingin mengimport package lain, bisa menggunakan import "nama_package"
@@ -81,6 +80,10 @@ func findian(ian string) string {
 	return "Not Found!"
 }
 
+func isGenap(angka int) bool {
+	return angka%2 == 0
+}
+
 func luasLingkaran(jariJari int) int {
 	var phi float64 = 3.14
 	var luas int = int(phi * float64(jariJari) * float64(jariJari))
@@ -106,7 +109,7 @@ func helloWorld() string {
 	return hello
 }
 
-func cariPrima (angka int) {
+func cariPrima(angka int) {
 	sliceHasil := []int16{}
 
 	for i := 0; i < angka; i++ {
@@ -203,10 +206,10 @@ func main() {
 	// di golang, array memiliki panjang yang tetap
 	// sintaksnya adalah variable := [jumlah]tipe_data{isi_array}
 	// atau bisa menggunakan ... untuk mengisi array tanpa menentukan jumlah array
-	var array = [3]int{1, 2, 3}
+	var array1 = [3]int{1, 2, 3}
 	var array2 = [...]int{1, 2, 3, 4, 5}
 
-	fmt.Println(array)
+	fmt.Println(array1)
 	fmt.Println(array2)
 
 	// Memanggil function dari package lain
@@ -507,10 +510,10 @@ func main() {
 	// angka 1 adalah jumlah penggantian yang ingin dilakukan
 	mengganti := strings.Replace(string2, "Ammar", "Adil", 12)
 	fmt.Println(mengganti)
-	
+
 	// split method untuk memisahkan string berdasarkan karakter tertentu
 	// mengembalikan array dari string yang sudah dipisahkan
-	split := strings.Split("Ahmad Ammar", "")
+	split := strings.Split("Ahmad Ammar", " ")
 	fmt.Println(split)
 
 	// iota adalah konstanta yang digunakan untuk mengurutkan nilai dari 0
@@ -521,10 +524,56 @@ func main() {
 	)
 
 	fmt.Println(monday, tuesday)
+	// string4 := "Ahmad Ammar"		
 
-	string4 := "Ahmad Ammar"
-	fmt.Scan(string4) 
 
-		
+	// fmt.Scan(&string4)
+
+	// dalam golang, jika kita menginisiasi array tanpa elemen maka secara default akan terisi oleh 0 sebagai elemennya
+	var array3 [5]int16
+	// array3[0] = 1
+	fmt.Println(array3)	
+
+	
+	// menginisiasi array tanpa indeks yang ditentukan menggunakan ...
+	var array4 = [...]int16{1, 2, 3}
+	fmt.Println(array4)
+
+	// menginisiasi array dengan indeks yang ditentukan
+	var array5 [5]int16 = [5]int16{1, 2, 4, 5, 6}
+	fmt.Println(array5)
+
+	fmt.Println(isGenap(10))
+
+	var integers int32 = 234312423
+	fmt.Println(integers)
+
+	var arrays [5]int16 = [5]int16{1, 2, 3, 4, 5}
+	var slices = arrays[1:3]
+	fmt.Println(slices)
+	fmt.Println(len(slices), cap(slices))
+
+	fmt.Println(arrays[1])
+	fmt.Println(arrays[2])
+
+	// ini adalah slice
+	var slicess = []int16{12,34}
+	fmt.Println(slicess)
+
+	makeSlices := "slices"
+	fmt.Println(makeSlices)
+
+
+	sli := make([]int16, 0, 3)
+	fmt.Println(sli)
+	sli = append(sli, 10)
+	sli = append(sli, 10)
+	sli = append(sli, 10)
+	sli = append(sli, 10)
+	sli = append(sli, 10)
+	fmt.Println(sli)
+
+	arrayString := [3]string{"Ammar", "Adil", "Sholum"}
+	fmt.Println(arrayString)
 
 }
