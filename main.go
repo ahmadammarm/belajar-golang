@@ -10,6 +10,7 @@ package main
 import (
 	"fmt"
 	"time"
+
 	// "go/types"
 	// "strconv"
 	"math/rand"
@@ -17,8 +18,9 @@ import (
 	"strings"
 
 	// Mengimport package lain dari folder yang berbeda menggunakan nama module/package
-	"belajar/hello"
 	"belajar/aritmatika"
+	"belajar/hello"
+
 )
 
 // Ingin mengimport package lain, bisa menggunakan import "nama_package"
@@ -102,6 +104,16 @@ func fizzBuzz(angka int) {
 func helloWorld() string {
 	var hello string = "Hello World"
 	return hello
+}
+
+func cariPrima (angka int) {
+	sliceHasil := []int16{}
+
+	for i := 0; i < angka; i++ {
+		if isPrime(i) {
+			fmt.Println(append(sliceHasil, int16(i)))
+		}
+	}
 }
 
 // function main akan dieksekusi saat program dijalankan
@@ -439,14 +451,13 @@ func main() {
 	fmt.Println(namaku)
 
 	fmt.Println(aritmatika.Aritmatika(1, 2))
-	
+
 	var angkaBaru int8 = 30
 	angkaBaru++
 	fmt.Println(angkaBaru)
 
 	var angkaBaru2 int8 = 34
 	fmt.Println(angkaBaru != angkaBaru2)
-
 
 	// Latian soal
 
@@ -456,12 +467,11 @@ func main() {
 	// Berapakah luas dari bagian taman selain kolam
 
 	// Ukuran luas taman berdasarkan satuan m^2
-	var luas_taman int16 = 2000
+	var luas_taman int16 = 2875
 
 	// jari jari kolam dalam satuan meter
-	var jari_jari_kolam int16= 10
-	var pi float64= 3.14
-
+	var jari_jari_kolam int16 = 10
+	var pi float64 = 3.14
 
 	var float_luas_taman = float64(luas_taman)
 	var float_jari_jari = float64(jari_jari_kolam)
@@ -473,5 +483,48 @@ func main() {
 	bagian_taman := float_luas_taman - luas_kolam
 
 	fmt.Println("Jadi luas dari bagian taman tanpa kolam tersebut adalah", bagian_taman)
+
+	cariPrima(12)
+
+	isExist := strings.Contains("Ahmad Ammar", "Aadil")
+	fmt.Println(isExist)
+
+	// compare method untuk membandingkan dua string dan mengembalikan nilai 0 jika sama dan -1 jika tidak sama
+	// mengembalikan nilai 1 jika string pertama lebih belakang urutannya dari string kedua menurut kamus
+	// mengembalikan nilai -1 jika string pertama lebih dulu urutannya dari string kedua menurut kamus
+	var compare = strings.Compare("Ahmad Ammar", "Abdullah Sholum")
+	fmt.Println(compare)
+
+	string3 := "Abdullah Sholum"
+	string1 := "Adil Zakaria"
+	// string2 := "Ahmad Ammar"
+
+	membandingkan := strings.Compare(string3, string1)
+	fmt.Println(membandingkan)
+
+	string2 := "Ahmad Ammar"
+
+	// angka 1 adalah jumlah penggantian yang ingin dilakukan
+	mengganti := strings.Replace(string2, "Ammar", "Adil", 12)
+	fmt.Println(mengganti)
+	
+	// split method untuk memisahkan string berdasarkan karakter tertentu
+	// mengembalikan array dari string yang sudah dipisahkan
+	split := strings.Split("Ahmad Ammar", "")
+	fmt.Println(split)
+
+	// iota adalah konstanta yang digunakan untuk mengurutkan nilai dari 0
+	// iota digunakan untuk mengurutkan nilai dari 0
+	const (
+		monday = iota
+		tuesday
+	)
+
+	fmt.Println(monday, tuesday)
+
+	string4 := "Ahmad Ammar"
+	fmt.Scan(string4) 
+
+		
 
 }
