@@ -657,4 +657,12 @@ func main() {
 	makeSlice[0] = 12
 	makeSlice[1] = 12
 	fmt.Println(cap(makeSlice))
+
+	// Perbedaan kode program array dan slice
+	// Array harus mendefinisikan panjang dari array tersebut
+	// Slice tidak harus
+	iniArray := [...]int16{1, 2, 3}
+	iniSlice := []int8{1, 3, 4, 5}
+
+	fmt.Println(iniArray, iniSlice)
 }
