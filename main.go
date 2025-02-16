@@ -71,6 +71,19 @@ func isPrime(angka int) bool {
 	return true
 }
 
+func tambahPrima(slice []int16) {
+	slicePrima := []int16{}
+
+	for i := 0; i < len(slice); i++ {
+		if isPrime(int(slice[i])) {
+			slicePrima = append(slicePrima, int16(slice[i]))
+		}
+	}
+
+	fmt.Println(slicePrima)
+
+}
+
 func findian(ian string) string {
 
 	if strings.HasPrefix(ian, "i") && strings.Contains(ian, "a") && strings.HasSuffix(ian, "n") {
@@ -524,17 +537,15 @@ func main() {
 	)
 
 	fmt.Println(monday, tuesday)
-	// string4 := "Ahmad Ammar"		
-
+	// string4 := "Ahmad Ammar"
 
 	// fmt.Scan(&string4)
 
 	// dalam golang, jika kita menginisiasi array tanpa elemen maka secara default akan terisi oleh 0 sebagai elemennya
 	var array3 [5]int16
 	// array3[0] = 1
-	fmt.Println(array3)	
+	fmt.Println(array3)
 
-	
 	// menginisiasi array tanpa indeks yang ditentukan menggunakan ...
 	var array4 = [...]int16{1, 2, 3}
 	fmt.Println(array4)
@@ -557,12 +568,11 @@ func main() {
 	fmt.Println(arrays[2])
 
 	// ini adalah slice
-	var slicess = []int16{12,34}
+	var slicess = []int16{12, 34}
 	fmt.Println(slicess)
 
 	makeSlices := "slices"
 	fmt.Println(makeSlices)
-
 
 	sli := make([]int16, 0, 3)
 	fmt.Println(sli)
@@ -576,4 +586,75 @@ func main() {
 	arrayString := [3]string{"Ammar", "Adil", "Sholum"}
 	fmt.Println(arrayString)
 
+	aa := "Ammar"
+	fmt.Println(aa)
+
+	var golang = "Arema"
+	var golang2 = "asad"
+	fmt.Println(golang, golang2)
+
+	membuat_array := [5]int16{1, 2, 3, 4}
+	fmt.Println(membuat_array)
+
+	membuat_array[3] = 31
+	fmt.Println(membuat_array)
+
+	fmt.Println(&sisi)
+
+
+	// Mendeklarasikan array dengan beda tipe dat indeksnya menggunakan interface
+	array_beda := []interface{}{1, 2, "asd"}
+	fmt.Println(array_beda)
+
+	var values [3]int16 = [3]int16{1, 2, 3}
+	fmt.Println(values)
+
+	// Kode di bawah akan menghasilkan error
+	// Meskipun array tersebut tidak disebutkan jumlah indeksnya
+	// Ketika ingin menambahkan indeks baru tidak bisa
+	// Karena sifat array pasti tidak bisa ditambah untuk indeksnya dan paten
+	array_tidak_ada_jumlah := []int16{1, 2, 3, 4}
+	// array_tidak_ada_jumlah[4] = 2
+	fmt.Println(array_tidak_ada_jumlah)
+
+
+
+	// Dalam slice ada 3 tipe, yaitu pointer, length, dan capacity
+	// Untuk pointer, adalah penunjuk pertama pada slice tersebut, misalnya pada slice di bawah ini pointernya adalah 1
+	// Untuk length adalah panjang dari slice tersebut, misalnya dalam slice di bawah in, length dari slice nya adalah 2 karena mengambil data pada indeks 1 hingga sebelum 3
+	// untuk capacity adalah kapasitas dari slice tersebut, misalnya dalam kasus ini capacity dari slice tersebut adalah 3 karena mengacu pada pointer hingga indeks terakhir dari array tersebut
+	slice_array := array_tidak_ada_jumlah[1:3]
+	fmt.Println(cap(slice_array))
+
+
+	slice_array = array_tidak_ada_jumlah[1:3]
+	fmt.Println(len(slice_array))
+
+	// slice_baru := make([]int16, 4, 4)
+	// fmt.Println(slice_baru)
+
+	// Jika ada perubahan elemen baru dalam slice yang mengambil dari array, maka data dalam array tersebut otomatis ikut berubah juga
+	// Karena sejatinya slice dalam mengambil data dari array
+	slice_array[1] = 12
+	fmt.Println(array_tidak_ada_jumlah) 
+
+	array_hari := [...]string{"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"}
+	fmt.Println(array_hari)
+
+	slice_hari := array_hari[1:4]
+	fmt.Println(slice_hari)
+
+	slice_hari[0] = "Selasa Baru"
+
+	slice_baru := append(slice_hari, "Hari Senin")
+	fmt.Println(slice_baru)
+	fmt.Println(array_hari)
+
+	tambahPrima([]int16{1, 3, 4, 5, 6, 7, 8})
+
+	// Membuat slice mulai dari awal
+	makeSlice := make([]int16, 2, 5)
+	makeSlice[0] = 12
+	makeSlice[1] = 12
+	fmt.Println(cap(makeSlice))
 }
