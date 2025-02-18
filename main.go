@@ -8,6 +8,7 @@ package main
 // fmt adalah package yang berisi fungsi-fungsi untuk input dan output
 // fmt adalah singkatan dari format
 import (
+	// "bytes"
 	"fmt"
 	"time"
 
@@ -70,6 +71,7 @@ func isPrime(angka int) bool {
 
 	return true
 }
+
 
 func tambahPrima(slice []int16) {
 	slicePrima := []int16{}
@@ -601,7 +603,6 @@ func main() {
 
 	fmt.Println(&sisi)
 
-
 	// Mendeklarasikan array dengan beda tipe dat indeksnya menggunakan interface
 	array_beda := []interface{}{1, 2, "asd"}
 	fmt.Println(array_beda)
@@ -617,15 +618,12 @@ func main() {
 	// array_tidak_ada_jumlah[4] = 2
 	fmt.Println(array_tidak_ada_jumlah)
 
-
-
 	// Dalam slice ada 3 tipe, yaitu pointer, length, dan capacity
 	// Untuk pointer, adalah penunjuk pertama pada slice tersebut, misalnya pada slice di bawah ini pointernya adalah 1
 	// Untuk length adalah panjang dari slice tersebut, misalnya dalam slice di bawah in, length dari slice nya adalah 2 karena mengambil data pada indeks 1 hingga sebelum 3
 	// untuk capacity adalah kapasitas dari slice tersebut, misalnya dalam kasus ini capacity dari slice tersebut adalah 3 karena mengacu pada pointer hingga indeks terakhir dari array tersebut
 	slice_array := array_tidak_ada_jumlah[1:3]
 	fmt.Println(cap(slice_array))
-
 
 	slice_array = array_tidak_ada_jumlah[1:3]
 	fmt.Println(len(slice_array))
@@ -636,7 +634,7 @@ func main() {
 	// Jika ada perubahan elemen baru dalam slice yang mengambil dari array, maka data dalam array tersebut otomatis ikut berubah juga
 	// Karena sejatinya slice dalam mengambil data dari array
 	slice_array[1] = 12
-	fmt.Println(array_tidak_ada_jumlah) 
+	fmt.Println(array_tidak_ada_jumlah)
 
 	array_hari := [...]string{"Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"}
 	fmt.Println(array_hari)
@@ -665,4 +663,169 @@ func main() {
 	iniSlice := []int8{1, 3, 4, 5}
 
 	fmt.Println(iniArray, iniSlice)
+
+	// tipe data map mirip seperti array dan slice namun ada key dan valuenya yang keynya bersifat unique
+	// dalam kurung tersebut adalah tipe dari key nya dan kemudian di luar kurung tersebut diikuti tipe valuenya
+	person := map[int16]string{
+		1: "Ammar",
+		2: "AmmarMusy",
+	}
+
+	fmt.Println(person[2])
+	fmt.Println(person[1])
+
+	// jika tidak ada key yang tertaut maka hasilnya akan kosong
+	// seperti di bawah ini, yang keynya hanya sampai 2 saja
+	// jika ingin mencetak dengan key 3 maka hasilnya akan kosong
+	fmt.Println(person[3])
+	fmt.Println(person)
+
+	books := map[string]string{
+		"Nama":    "Buku Golang",
+		"Halaman": "400",
+		"Penulis": "Ahmad Ammar",
+	}
+
+	delete(books, "Halaman")
+	fmt.Println(books)
+
+	total_belanja := 120
+	diskon := 10
+
+	// Control flow adalah metode untuk mengatur urutan eksekusi program
+	// If statement
+	// Salah satu control flow untuk melakukan perintah kondisional berdasarkan kondisi tertentu
+	if total_belanja > 100 {
+		fmt.Println("Total harga lebih dari 100")
+		total_belanja = total_belanja - diskon
+	}
+
+	fmt.Println(total_belanja)
+
+	ammars := "ammar"
+	fmt.Println(ammars)
+
+	namakus := "Ahmad"
+	if namakus == "Ahmad" {
+		fmt.Println("Hello", namakus)
+	} else if namakus == "Ahmad Ammar Musyaffa" {
+		fmt.Println("Hello Ammar")
+	} else {
+		fmt.Println("Hai, boleh kenalan ga?")
+	}
+
+	if length_nama := len(namakus); length_nama > 5 {
+		fmt.Println("Nama cukup")
+	}
+
+	// Latihan soal
+	// no 1
+	// deklarasi variable
+
+	variable1 := "Ahmad Ammar"
+	variable2 := 21
+	variable3 := 70.5
+
+	fmt.Println(variable1)
+	fmt.Println("Umurnya", variable2, "tahun")
+	fmt.Println("Berat badannya", variable3, "kg")
+
+	// no 2
+	// if else expression
+
+	variable_angka := 7
+
+	if variable_angka%2 == 0 {
+		fmt.Println(variable_angka, "adalah bilangan genap")
+	} else {
+		fmt.Println(variable_angka, "adalah bilangan ganjil")
+	}
+
+	// no 3
+	// penambahan elemen dalam slice
+
+	variable_slice := []int16{1, 2, 3, 5}
+	appendSlice := append(variable_slice, 1)
+	fmt.Println(appendSlice)
+
+	// no 4
+	// cek angka
+
+	var angkaSlice int16 = 15
+	slicenya := []int16{43, 51, 153, 64, 29}
+	found := false
+
+	for i := 0; i < len(slicenya); i++ {
+		if slicenya[i] == angkaSlice {
+			found = true
+			break
+		}
+	}
+
+	if found {
+		fmt.Println(angkaSlice, "berhasil ditemukan")
+	} else {
+		fmt.Println(angkaSlice, "tidak ditemukan")
+	}
+
+	// no 5
+	// menghitung rata rata elemen dalam slice
+
+	sliceBaru := []float64{12.3, 134.5, 94.4, 52}
+
+	var totalElemen float64 = 0
+
+	for _, elemen := range sliceBaru {
+		totalElemen = totalElemen + elemen
+	}
+
+	avg := totalElemen / float64(len(sliceBaru))
+
+	fmt.Println(avg)
+
+	sliceTahun := []int16{21231, 22331, 1340, 24421}
+
+	var totalElemens int16 = 0
+
+	for _, elemen := range sliceTahun {
+		totalElemens = totalElemens + elemen
+	}
+
+	// rataRata := totalElemens / int16(len(sliceTahun))
+
+	fmt.Println((totalElemens))
+
+	var sliceUmur = []int16{19, 21, 21, 21, 21, 22}
+
+	var totalUmur int16 = 0
+
+	for _, elements := range sliceUmur {
+		totalUmur = totalUmur + elements
+	}
+
+	rataRataUmur := totalUmur / int16(len(sliceUmur))
+
+	fmt.Println(rataRataUmur)
+
+	if umurAmmar := 20; umurAmmar > 20 {
+		fmt.Println("Sudah besar")
+	} else {
+		fmt.Println("Masih bocil")
+	}
+
+	if isPrime(113) {
+		fmt.Println("True")
+	} else {
+		fmt.Println("False")
+	}
+
+	slicePrima := []int16{2, 3, 5, 7, 11}
+
+	var totalPrima int16 = 0
+
+	for _, elemen := range slicePrima {
+		totalPrima += elemen
+	}
+
+	fmt.Println(totalPrima)
 }
